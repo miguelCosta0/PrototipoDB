@@ -1,7 +1,7 @@
 import pg, { Pool } from 'pg';
 import 'dotenv/config'
 
-export async function ConnectToDbAndReturnPoll()
+export function ConnectToDbAndReturnPoll()
 {
     const client = new pg.Pool({
         host: process.env.DB_HOST || "localhost",
