@@ -5,7 +5,7 @@ var dbPool = require('../services/pgconnect').ConnectToDbAndReturnPoll()
 router.get('/', async function(req, res, next) {
 	let query;
   let prodId = req.query.AssociadoComProdutoId
-	
+
 	if(prodId != undefined && isNaN(prodId))
 	{
 		return res.status(400).send({error: "O parametro passado nao é um numero, passe um id de um produto para associar"})
@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/:id', async function(req, res, next) {
-  let prod = await dbPool.query("SELECT * FROM ecommerce.produto WHERE id = $1", [req.params.id])
+  let prod = await dbPool.query("SELECT * FROM desconto WHERE id = $1", [req.params.id])
   res.send(prod.rows)
 });
 
