@@ -5,7 +5,8 @@ var logger = require('morgan');
 var dotenv = require('dotenv').config()
 
 var produtosRouter = require('./routes/produtos');
-var tabelasRouter = require('./routes/tabelas')
+var tabelasRouter = require('./routes/tabelas');
+var descontosRouter = require('./routes/descontos')
 
 var app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/produtos', produtosRouter);
 app.use('/tabelas', tabelasRouter);
+app.use('/descontos', descontosRouter)
 
 app.listen(process.env.EXPRESS_PORT)
 
