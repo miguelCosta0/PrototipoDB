@@ -16,14 +16,29 @@ Usado para manipular e inserir qualquer produto na base de dados
 - ### GET(/:id)
     -   Retorna as informações de um produto especifico dado seu ID, também no formato
         `id | nome | preco_unitario`
+- ### POST(/)
+    - Cria um novo produto
+    #####
+    - O body da requisicao deve ser um JSON na seguinte interface:
+    `{
+        	"Nome": "StringNomeProduto",
+	"Preco_Unitario": Number
+    }`
+    #####
+    - O retorno será no formato:
+    `{		"id": Number,
+		"nome": "StringNomeProduto",
+		"preco_unitario": Number}`
+
 ## Descontos (/descontos)
 
 - ### GET(/)
     -   Retorna todos os descontos registrados
 
+- ### GET(/:id)
+    -   Retorna o desconto com o ID associado
+
 - ### GET(/?AssociadoComProdutoId = Number)
     -   Faz um Join dos produtos com todos os descontos no qual ele é associado
     - Retorno:
     `prodid | descid | data_inicio | data_fim | porcentagem`
-- ### GET(/:id)
-    -   Retorna o desconto com o ID associado
