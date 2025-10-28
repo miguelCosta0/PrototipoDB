@@ -39,6 +39,23 @@ Usado para manipular e inserir qualquer produto na base de dados
     -   Retorna o desconto com o ID associado
 
 - ### GET(/?AssociadoComProdutoId = Number)
-    -   Faz um Join dos produtos com todos os descontos no qual ele é associado
+    - Faz um Join dos produtos com todos os descontos no qual ele é associado
+    ######
     - Retorno:
     `prodid | descid | data_inicio | data_fim | porcentagem`
+
+- ### POST(/)
+    -  Cria um novo desconto, a validade das datas nao sao checadas, use essa informação com cuidado
+    ####
+    -  Body:
+    `{"data_inicio": "YYYY-MM-DD",
+	"data_fim": "YYYY-MM-DD",
+	"porcentagem": 0 < Number <= 1
+    }`
+    ####
+    - Return
+    `{"id": Number,
+    "data_inicio": "YYYY-MM-DD",
+	"data_fim": "YYYY-MM-DD",
+	"porcentagem": 0 < Number <= 1
+    }`
