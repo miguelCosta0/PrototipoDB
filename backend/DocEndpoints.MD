@@ -59,3 +59,13 @@ Usado para manipular e inserir qualquer produto na base de dados
 	"data_fim": "YYYY-MM-DD",
 	"porcentagem": 0 < Number <= 1
     }`
+- ### POST(/AssociarAoProd)
+    -   Associa um desconto a um produto dados seus IDs
+
+    ####
+    - Body:
+    `{
+	"id_desconto": Number,
+	"id_produto": Number} `
+    ####
+    - Retorna mensagens de erro e o codigo 400 caso haja algo errado com o body e o status 201 se ocorrer sucesso

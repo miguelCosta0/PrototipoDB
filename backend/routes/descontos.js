@@ -1,4 +1,5 @@
 var express = require('express');
+const { route } = require('./produtos');
 var router = express.Router();
 var dbPool = require('../services/pgconnect').ConnectToDbAndReturnPoll()
 
@@ -46,6 +47,27 @@ router.post('/', async (req, res) => {
 		res.status(201).send(descontoInserted.rows)
 	} catch (error) {
 		res.status(500).send({error: "Um erro ocorreu durante essa consulta"})
+	}
+})
+
+router.post('/AssociarAoProd', async (req,res) => {
+
+	let idDesconto = req.body.id_desconto
+	let idProduto = req.body.id_produto
+
+	if(idDesconto == undefined || idProduto == undefined)
+	{
+		res.status(400).send({error: "IdDesconto ou IdProduto nao estao definidos"})
+	}
+
+	try {
+
+		await dbPool.query("INSERT INTO produtodesconto(produto_id, desconto_id) VALUES ($1, $2)", [idProduto, idDesconto])
+		res.status(201).send()
+
+	} catch (error) {
+		console.log(error)
+		res.status(400).send({error: "A consulta deu erro, verifique se os IDs Existem ou se o desconto já não existe"})
 	}
 })
 
