@@ -5,6 +5,7 @@ var logger = require('morgan');
 var dotenv = require('dotenv').config()
 
 var produtosRouter = require('./routes/produtos');
+var tabelasRouter = require('./routes/tabelas')
 
 var app = express();
 
@@ -15,7 +16,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/produtos', produtosRouter);
+app.use('/tabelas', tabelasRouter);
 
-app.listen(3333)
+app.listen(process.env.EXPRESS_PORT)
 
 module.exports = app;
