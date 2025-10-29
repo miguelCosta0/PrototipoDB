@@ -69,3 +69,12 @@ Usado para manipular e inserir qualquer produto na base de dados
 	"id_produto": Number} `
     ####
     - Retorna mensagens de erro e o codigo 400 caso haja algo errado com o body e o status 201 se ocorrer sucesso
+## SQL puro (/rawsql)
+- ### POST(/)
+    - Tenha cuidado com esse endpoint, evite ao maximo usá-lo pois não há nenhuma segurança, ele só esta aqui caso a professora peça que o prótotipo execute consultas personalizadas
+    ####
+    - Body:
+    `{
+	"sql": CodigoSQL ex: "SELECT sum(porcentagem) FROM desconto"}`
+    ####
+    - Retorno: Personalizado para cada consulta, a unica certeza é que será um JSON, para inserções, deletes e update, utilize o "RETURNING *" no fim da consulta para retornar algum campo, caso contrário será retornado um JSON vazio

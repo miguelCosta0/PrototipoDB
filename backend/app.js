@@ -7,6 +7,7 @@ var dotenv = require('dotenv').config()
 var produtosRouter = require('./routes/produtos');
 var tabelasRouter = require('./routes/tabelas');
 var descontosRouter = require('./routes/descontos')
+var SqlPurissimoRouter = require('./routes/SqlPuro')
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/produtos', produtosRouter);
 app.use('/tabelas', tabelasRouter);
 app.use('/descontos', descontosRouter)
+app.use('/rawsql', SqlPurissimoRouter)
 
 app.listen(process.env.EXPRESS_PORT)
 
