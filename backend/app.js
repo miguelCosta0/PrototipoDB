@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var dotenv = require('dotenv').config()
+var cors = require('cors')
 
 var produtosRouter = require('./routes/produtos');
 var tabelasRouter = require('./routes/tabelas');
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/produtos', produtosRouter);
 app.use('/tabelas', tabelasRouter);
