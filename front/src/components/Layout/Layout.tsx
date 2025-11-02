@@ -1,4 +1,3 @@
-import { useEffect, useContext, useState, use } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 
 import Box from '@mui/material/Box';
@@ -16,14 +15,14 @@ export default function Layout() {
 
       <AppBar position='static' className='navbar'>
         <Toolbar>
-          <Box onClick={() => nav('selecao')}>
-            <Typography> seleção </Typography>
+          <Box onClick={() => nav('selecionar')}>
+            <Typography> selecionar </Typography>
           </Box>
           <Box onClick={() => nav('adicionar')}>
             <Typography> adicionar </Typography>
           </Box>
-          <Box onClick={() => nav('alterar')}>
-            <Typography> alterar </Typography>
+          <Box onClick={() => nav('atualizar')}>
+            <Typography> atualizar </Typography>
           </Box>
           <Box onClick={() => nav('deletar')}>
             <Typography> deletar </Typography>

@@ -1,6 +1,7 @@
 CREATE SCHEMA ecommerce;
 SET search_path TO ecommerce, public;
 
+/*
 CREATE TABLE Cliente (
   CPF varchar(11) NOT NULL PRIMARY KEY,
   Nome varchar(255) NOT NULL
@@ -29,6 +30,7 @@ CREATE TABLE Suporte (
   Data date	NOT NULL,
   CONSTRAINT Suporte_PK PRIMARY KEY (Protocolo)
 );
+*/
 
 CREATE TABLE Produto (
   ID serial NOT NULL PRIMARY KEY,
@@ -36,12 +38,14 @@ CREATE TABLE Produto (
   Preco_Unitario money NOT NULL
 );
 
+/*
 CREATE TABLE CarrinhoProduto (
   CarrinhoVenda_ID serial NOT NULL REFERENCES CarrinhoVenda (ID),
   Produto_ID serial NOT NULL REFERENCES Produto (ID),
   Quantidade int NOT NULL,
   CONSTRAINT CarrinhoProduto_PK PRIMARY KEY (CarrinhoVenda_ID, Produto_ID)
 );
+*/
 
 CREATE TABLE Desconto (
   ID serial NOT NULL PRIMARY KEY,
@@ -56,6 +60,7 @@ CREATE TABLE ProdutoDesconto (
   CONSTRAINT ProdutoDesconto_PK PRIMARY KEY (Produto_ID, Desconto_ID)
 );
 
+/*
 CREATE TABLE Categoria (
   ID serial NOT NULL PRIMARY KEY,
   Nome varchar(64) NOT NULL UNIQUE
@@ -73,6 +78,7 @@ INSERT INTO Cliente (CPF, Nome) VALUES
 ('78722921060', 'Carla Oliveira'),
 ('98444992089', 'Daniel Souza'),
 ('49269550087', 'Eliana Santos');
+
 INSERT INTO Funcionario (Nome, Tipo, Salario) VALUES
 ('Adriano Rodrigues', 1, 4500.00),
 ('Débora Barbosa', 2, 2800.50),
@@ -93,6 +99,7 @@ INSERT INTO Suporte (Funcionario_ID, Cliente_CPF, CarrinhoVenda_ID, Protocolo, D
 (1, '09746130021', 1, 'SUP-0001-2025', '2025-10-14'),
 (2, '23453769023', 2, 'SUP-0002-2025', '2025-10-14'),
 (3, '78722921060', 3, 'SUP-0003-2025', '2025-10-15');
+*/
 
 INSERT INTO Produto (Nome, Preco_Unitario) VALUES
 ('Tênis Esportivo', 189.90),
@@ -105,6 +112,7 @@ INSERT INTO Produto (Nome, Preco_Unitario) VALUES
 ('Mouse Gamer RGB', 145.99),
 ('Monitor LED 24"', 1150.00);
 
+/*
 INSERT INTO CarrinhoProduto (CarrinhoVenda_ID, Produto_ID, Quantidade) VALUES
 (1, 1, 1),
 (1, 3, 2),
@@ -114,6 +122,7 @@ INSERT INTO CarrinhoProduto (CarrinhoVenda_ID, Produto_ID, Quantidade) VALUES
 (4, 4, 1),
 (5, 7, 1),
 (5, 8, 1);
+*/
 
 INSERT INTO Desconto (Data_Inicio, Data_Fim, Porcentagem) VALUES
 ('2025-10-01', '2025-10-15', 0.10),
@@ -129,6 +138,7 @@ INSERT INTO ProdutoDesconto (Produto_ID, Desconto_ID) VALUES
 (9, 2),
 (6, 3);
 
+/*
 INSERT INTO Categoria (Nome) VALUES
 ('Vestuário'),
 ('Acessórios'),
@@ -147,3 +157,4 @@ INSERT INTO ProdutoCategoria (Produto_ID, Categoria_ID) VALUES
 (7, 3),
 (8, 4),
 (9, 4);
+*/

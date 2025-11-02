@@ -1,9 +1,4 @@
 
-export type TTables = 'Produto' | 'Desconto';
+export type TTables = 'Produto' | 'Desconto' | 'ProdutoDesconto';
 
-// export type TJoin = {
-//   // table: TTables,
-//   // type: 'inner' | 'left' | 'right',
-//   // on: string,
-//   tableAlias?: string
-// };
+export type TData = Array<Record<string, any>>;

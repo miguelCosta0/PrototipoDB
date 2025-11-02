@@ -39,7 +39,7 @@ const app_config = {
   plugins: [ new webpack.DefinePlugin({ 'process.env': JSON.stringify(dotenv.parsed) }) ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    plugins: [       new TsconfigPathsPlugin() ]
+    plugins: [ new TsconfigPathsPlugin() ]
   }
 };
 

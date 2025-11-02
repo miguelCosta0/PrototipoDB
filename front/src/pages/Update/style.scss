@@ -1,4 +1,4 @@
-.select-page {
+.update-page {
   & {
     width: 100%;
     display: flex;
@@ -32,6 +32,11 @@
         input {
           padding: 5px;
         }
+      }
+
+      .MuiFormHelperText-root {
+        margin: 0 5px;
+        color: red;
       }
 
       .MuiSelect-root {

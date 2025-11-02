@@ -1,7 +1,7 @@
-import { Navigate, } from 'react-router';
+import { Navigate } from 'react-router';
 
 export default function Redirect() {
   return (
-    <Navigate to='/selecao' replace={true} />
+    <Navigate to='/selecionar' replace={true} />
   );
 };

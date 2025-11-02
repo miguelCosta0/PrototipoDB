@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { formatInTimeZone } from 'date-fns-tz';
+import { TData } from "../../types";
 
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -9,10 +10,9 @@ import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
 export type ResponseTableProps = {
-  data: Array<Record<string, any>>,
+  data: TData,
 };
 
-// TODO   LIDAR COM DATAS!
 // data.length > 0 !
 export default function ResponseTable({ data }: ResponseTableProps) {
   const columns = Object.keys(data[0]);
@@ -35,12 +35,11 @@ export default function ResponseTable({ data }: ResponseTableProps) {
             data.map((row, idx) => (
               <TableRow key={idx}>
                 {
-                  columns.map((col, idx) => {
-                    const cell = row[col];
-                    return (
-                      <TableCell key={idx}>{cell}</TableCell>
-                    );
-                  })
+                  columns.map((col, idx) =>
+                    <TableCell key={idx}>
+                      {formatCell(col, row[col])}
+                    </TableCell>
+                  )
                 }
               </TableRow>
             ))
@@ -50,3 +49,16 @@ export default function ResponseTable({ data }: ResponseTableProps) {
     </TableContainer>
   );
 };
+
+function formatCell(colName: string, cell: any) {
+  if (colName.toLowerCase().includes('data')) {
+    return formatInTimeZone(cell, 'UTC', 'dd/MM/yyyy');
+  }
+  if (colName.toLowerCase().includes('preco')) {
+    return (cell as string).replace('$', 'R$');
+  }
+  if (colName.toLowerCase().includes('porcentagem')) {
+    return ((cell as number) * 100) + '%';
+  }
+  return cell;
+}
