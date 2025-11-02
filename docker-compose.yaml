@@ -24,6 +24,13 @@ services:
       - DB_PORT=5432
       - DB_DATABASE=postgres
       - EXPRESS_PORT=3333
-
+  
+  front:
+    build: ./front
+    ports:
+      - "5050:5050"
+    depends_on:
+      - backend
+    
 volumes:
   postgres_data:
