@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -10,7 +10,7 @@ services:
       - "5433:5433"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  
+
   backend:
     build: ./backend
     ports:
@@ -24,13 +24,15 @@ services:
       - DB_PORT=5432
       - DB_DATABASE=postgres
       - EXPRESS_PORT=3333
-  
+
   front:
     build: ./front
     ports:
       - "5050:5050"
     depends_on:
       - backend
-    
+    environment:
+      - DB_URL='http://127.0.0.1:3333'
+
 volumes:
   postgres_data:
