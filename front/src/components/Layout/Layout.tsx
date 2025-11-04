@@ -15,6 +15,9 @@ export default function Layout() {
 
       <AppBar position='static' className='navbar'>
         <Toolbar>
+          <Box onClick={() => nav('tabelas')}>
+            <Typography> tabelas </Typography>
+          </Box>
           <Box onClick={() => nav('selecionar')}>
             <Typography> selecionar </Typography>
           </Box>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 
 import Layout from '@components/Layout/Layout';
 import Redirect from '@components/Redirect/Redirect';
+import AvailableTables from '@pages/AvailableTables/AvailableTables';
 import SelectPage from '@pages/Select/SelectPage';
 import InsertPage from '@pages/Insert/InsertPage';
 import UpdatePage from '@pages/Update/UpdatePage';
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
     element: <Layout />,
 
     children: [
+      {
+        path: '/tabelas',
+        element: <AvailableTables />,
+      },
       {
         path: '/selecionar',
         element: <SelectPage />,

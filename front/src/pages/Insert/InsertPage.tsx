@@ -17,8 +17,6 @@ import AlertTitle from '@mui/material/AlertTitle';
 
 import './style.scss';
 
-const URL_DB = 'http://127.0.0.1:3333'; // tira isso
-
 export default function InsertPage() {
   const [table, setTable] = useState<TTables>('Produto');
   const [responseTable, setResponseTable] = useState<TTables>('Produto');
@@ -230,7 +228,7 @@ export default function InsertPage() {
       setData(null);
       return;
     }
-    return fetch(`${URL_DB}/rawsql`, {
+    return fetch(`${process.env.DB_URL}/rawsql`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -258,7 +256,7 @@ export default function InsertPage() {
       setData(null);
       return;
     }
-    return fetch(`${URL_DB}/rawsql`, {
+    return fetch(`${process.env.DB_URL}/rawsql`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -285,7 +283,7 @@ export default function InsertPage() {
       setData(null);
       return;
     }
-    return fetch(`${URL_DB}/rawsql`, {
+    return fetch(`${process.env.DB_URL}/rawsql`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

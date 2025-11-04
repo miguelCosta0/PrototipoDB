@@ -19,12 +19,12 @@ export default function ResponseTable({ data }: ResponseTableProps) {
 
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table align='center'>
         <TableHead>
           <TableRow>
             {
               columns.map((col, idx) => (
-                <TableCell key={idx}>{col}</TableCell>
+                <TableCell key={idx} align='center'>{col}</TableCell>
               ))
             }
           </TableRow>
@@ -36,7 +36,7 @@ export default function ResponseTable({ data }: ResponseTableProps) {
               <TableRow key={idx}>
                 {
                   columns.map((col, idx) =>
-                    <TableCell key={idx}>
+                    <TableCell key={idx} align='center'>
                       {formatCell(col, row[col])}
                     </TableCell>
                   )

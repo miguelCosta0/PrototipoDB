@@ -35,8 +35,10 @@ const app_config = {
     filename: 'bundle.js',
     path: path.join(__dirname,  "dist"),
   },
-  module: { rules: rules },
-  plugins: [ new webpack.DefinePlugin({ 'process.env': JSON.stringify(dotenv.parsed) }) ],
+  module: { rules },
+  plugins: [ 
+    new webpack.DefinePlugin({ 'process.env': JSON.stringify(dotenv.parsed) }) 
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [ new TsconfigPathsPlugin() ]

@@ -19,8 +19,6 @@ import AlertTitle from '@mui/material/AlertTitle';
 
 import './style.scss';
 
-const URL_DB = 'http://127.0.0.1:3333'; // tira isso
-
 export default function SelectPage() {
   const [select, setSelect] = useState('');
   const [table, setTable] = useState<TTables>('Produto');
@@ -137,7 +135,7 @@ export default function SelectPage() {
 
   async function handleQuerySubmit() {
     try {
-      const res = await fetch(`${URL_DB}/rawsql`, {
+      const res = await fetch(`${process.env.DB_URL}/rawsql`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -2,6 +2,6 @@ import { Navigate } from 'react-router';
 
 export default function Redirect() {
   return (
-    <Navigate to='/selecionar' replace={true} />
+    <Navigate to='/tabelas' replace={true} />
   );
 };
