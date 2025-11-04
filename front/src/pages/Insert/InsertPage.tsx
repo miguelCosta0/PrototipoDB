@@ -83,7 +83,7 @@ export default function InsertPage() {
               <TextField
                 onBlur={(e) => setData_Inicio(e.target.value.trim())}
                 label='Data Inicio'
-                placeholder='dd/mm/aaaa'
+                placeholder='AAAA-MM-DD'
                 helperText='Campo obrigatório'
               />
             </Box>
@@ -91,7 +91,7 @@ export default function InsertPage() {
               <TextField
                 onBlur={(e) => setData_Fim(e.target.value.trim())}
                 label='Data Fim'
-                placeholder='dd/mm/aaaa'
+                placeholder='AAAA-MM-DD'
                 helperText='Campo obrigatório'
               />
             </Box>
@@ -238,15 +238,13 @@ export default function InsertPage() {
   }
 
   async function insertDesconto() {
-    const m1 = data_Inicio.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-    const m2 = data_Fim.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
     const _porc = parseInt(porcentagem.replace('%', '').replace(',', '.'));
-    if (!m1) {
+    if (!data_Inicio.match(/^\d{4}-\d{2}-\d{2}$/)) {
       setError('Data Inicio inválida.');
       setData(null);
       return;
     }
-    if (!m2) {
+    if (!data_Fim.match(/^\d{4}-\d{2}-\d{2}$/)) {
       setError('Data Fim inválida.');
       setData(null);
       return;
@@ -260,11 +258,7 @@ export default function InsertPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        sql: createInsertDescontoQuery(
-          `${m1[3]}-${m1[2]}-${m1[1]}`,
-          `${m2[3]}-${m2[2]}-${m2[1]}`,
-          _porc / 100
-        )
+        sql: createInsertDescontoQuery(data_Inicio, data_Fim, _porc / 100)
       })
     });
   }
